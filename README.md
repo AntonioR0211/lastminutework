@@ -1,3 +1,4 @@
 # lastminutework
 
-Die in a fire.
+I'm finally free
+
