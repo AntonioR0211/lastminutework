@@ -5,20 +5,16 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
-# choose countries of interest
 my_countries = ['United States', 'Zimbabwe','Cuba', 'Caribbean small states', "Cameroon", "Burundi"]
-ns_countries = ['United States', 'Canada', 'Venezuela', 'Peru', 'Mexico', 'Brazil']
-eu_countries = ['Germany', 'Greece', 'Italy', 'Poland', 'Turkey', 'Sweden']
-african_countries = ['Zimbabwe', 'Egypt', 'South Africa', 'Morocco', 'Chad', 'Niger']
-asian_countries = ['China', 'North Korea', 'South Korea', 'Japan', 'India', 'Russia']
+ns_countries = ['United States', 'Canada', 'Mexico', 'Brazil', 'Cuba', 'Argentina']
+eu_countries = ['France', 'Italy', 'Spain', 'Turkey', 'Sweden', 'Norway']
+african_countries = ['Egypt', 'Morocco', 'Madagascar', 'Zimbabwe', 'Chad', 'Niger']
+asian_countries = ['China', 'Vietnam', 'India', 'Saudi Arabia', 'South Korea', 'North Korea']
 
-# Load in the data with read_csv()
 df = pd.read_csv("elec_access_data.csv", header=0)    # header=0 means there is a header in row 0
 
-# get a list unique countries
 unique_countries = df['Entity'].unique()
 
-# Plot the data on a line graph
 countries = []
 countries.append(ns_countries)
 countries.append(eu_countries)
@@ -28,10 +24,8 @@ for i in range (4):
   for c in unique_countries:
     if c in countries[i]:
       
-      # match country to one of our we want to look at and get a list of years
       years = df[df['Entity'] == c]['Year']
 
-      # match country to one of our we want to look at and get a list of electriciy values
       sum_elec = df[df['Entity'] == c]['Access']
 
       plt.plot(years, sum_elec, label=c, marker="8", linestyle="-")
@@ -40,3 +34,12 @@ for i in range (4):
   plt.title('Percent of Population with Access to Electricity')
   plt.legend()
   plt.show()
+
+
+# Question 9: I can notice that Europe is far more developed than other continents as all of the countries
+# in the Europe graph end up at 100% or almost 100% in the end, other graphs end all over the place where
+# countries could be 100% or even as low as 10%.
+
+# Question 10: My classmate Joe has very similar Europe graphs as they are almost identical. The countries for other
+# continents are different so those graphs are a little bit changed since some of his countries are far more developed
+# than some of mine.
